@@ -4,14 +4,7 @@
 
 <form action="" method="post">
 {% csrf_token %}
-First Name:<br>
-<input name="first">
-<br><br>
-Last Name:<br>
-<input name="last">
-<br><br>
-Age: <br>
-<input name="age">
-<br><br>
+{{ form.as_ul }}
+
 <input type="submit" value="Submit">
 </form>

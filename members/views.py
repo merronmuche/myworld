@@ -2,7 +2,7 @@ from django.shortcuts import render, redirect, HttpResponse
 from django.urls import reverse
 from django.template import loader
 from members.models import Members
-
+from members.forms import MembersForm
 def index(request):
   
   members = Members.objects.all()
@@ -21,13 +21,20 @@ def new_mod(request):
 def add(request):
     
     if request.method == 'GET':
-      return render(request, 'members/add.html')
+      form = MembersForm()
+      context = {
+        'form':form
+      }
+      return render(request, 'members/add.html', context)
     else:
-        x = request.POST['first']
-        y = request.POST['last']
-        age = request.POST['age']
-        Members.objects.create(firstname=x, lastname=y, age=age)
-        return redirect(reverse('index'))
+          
+        form = MembersForm(request.POST)
+        if form.is_valid():
+          x =form.cleaned_data['firstname']
+          y = form.cleaned_data['lastname']
+          age = form.cleaned_data['age']
+          Members.objects.create(firstname=x, lastname=y, age=age)
+          return redirect(reverse('index'))
 
 
 def delete(request, id):
