@@ -4,6 +4,7 @@ from django.urls import path
 from members import views
 
 urlpatterns = [
-    path('', views.index),
-    path('ccc/',views.new_mod)
+    path('', views.index, name='index'),
+    path('ccc/',views.new_mod),
+    path('add/', views.add, name='add'),
 ]

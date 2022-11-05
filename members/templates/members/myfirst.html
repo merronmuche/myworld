@@ -16,11 +16,15 @@
 <table border="1">
 {% for x in members %}
 <tr>
-<td>{{ x.id }}</td>
+<th>{{ x.id }}</th>
 <td>{{ x.firstname }}</td>
 <td>{{ x.lastname }}</td>
 </tr>
 {% endfor %}
 </table>
+
+<p>
+    <a href="add/">Add member</a>
+</p>
 </body>
 </html>
