@@ -26,10 +26,12 @@ def add(request):
         x = request.POST['first']
         y = request.POST['last']
         age = request.POST['age']
-        member = Members(firstname=x, lastname=y, age=age)
-        member.save()
+        Members.objects.create(firstname=x, lastname=y, age=age)
         return redirect(reverse('index'))
 
 
+def delete(request, id):
+    member = Members.objects.get(id=id)
+    member.delete()
+    return redirect(reverse('index'))
   
- 
