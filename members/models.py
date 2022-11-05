@@ -7,6 +7,6 @@ class Members(models.Model):
   lastname = models.CharField(max_length=255)
   age = models.IntegerField()
 
-  # def __str__(self):
-  #       return self.firstname
+  def __str__(self):
+        return self.firstname
 
